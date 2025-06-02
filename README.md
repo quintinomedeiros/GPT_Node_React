@@ -61,7 +61,7 @@ chatgpt-integration/
 │   ├── .gitignore
 │   ├── package.lock.json
 │   ├── package.json
-├── README.md
+└── README.md
 ```
 
 ## Como o servidor funciona
@@ -288,11 +288,24 @@ No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda c
 
 #### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css - ajustar importação em App.js e index.js)
 
+
+### 15. Instalar Axiox para consumir api
+
 ```bash
-mkdir server web
-cd server
+npm i axios
 ```
 
+#### Crie o arquivo web/api/api.js
+```js
+import axios from 'axios'
+
+const URL_API = 'http://localhost:5555/api/prompt'
+
+export const makeRequest = async (message) => {
+    const {data} = await axios.post(URL_API, message)
+    return data
+}
+```
 
 ---
 
