@@ -249,14 +249,17 @@ app.use(routes)
 module.exports = app;
 ```
 
----
-
-### 13. Instalar o react (no diretório web)
+### 13. Instalar o react (caso não tenha instalado) e criar o projeto react (no diretório web)
 
 ```bash
 cd web
 npm install -g create-react-app
 ```
+```bash
+npx create-react-app gpt-front
+```
+
+---
 
 ## 📄 Exemplo de Requisição
 
