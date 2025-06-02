@@ -21,26 +21,26 @@ Este projeto é um exemplo completo de como criar uma aplicação que integra um
 
 ## 📁 Estrutura do Projeto
 
+```
 chatgpt-integration/
 ├── server/ # Backend com Node.js + Express
-│ ├── src/
-│ │ ├── config/
-│ │ │ └── openai.js
-│ │ ├── controllers/
-│ │ │ └── prompt-controller.js
-│ │ ├── models/
-│ │ │ └── input-prompt.js
-│ │ ├── routes/
-│ │ │ └── routes.js
-│ │ ├── app.js
-│ │ └── server.js
-│ ├── .env
-│ ├── .gitignore
-│ └── package.json
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── openai.js
+│   │   ├── controllers/
+│   │   │   └── prompt-controller.js
+│   │   ├── models/
+│   │   │   └── input-prompt.js
+│   │   ├── routes/
+│   │   │   └── routes.js
+│   │   ├── app.js
+│   │   └── server.js
+│   ├── .env
+│   ├── .gitignore
+│   └── package.json
 ├── web/ # Frontend com React
-│ └── ...
-
----
+│   └── ...
+```
 
 ## 🔹 Passo a Passo
 
