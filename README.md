@@ -50,9 +50,12 @@ chatgpt-integration/
 │   │   ├── manifest.json
 │   │   └── robots.txt
 │   ├── src/
-│   │   ├── App.css
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── styles/
+│   │   │   ├── App.css
+│   │   │   └──index.css
 │   │   ├── App.js
-│   │   ├── index.css
 │   │   ├── index.js
 │   │   └── logo.svg
 │   ├── .gitignore
@@ -280,6 +283,15 @@ npx create-react-app gpt-front
 > ⚠️ **Dica:** em src elimine os arquivos - test.js; reportWebVitals.js (eliminar o código ao fim e a importação em index.js); setuptests.js.
 
 No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda com npm scripts
+
+### 14. Criar conexão entre front-end e chatgpt
+
+#### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css)
+
+```bash
+mkdir server web
+cd server
+```
 
 
 ---
