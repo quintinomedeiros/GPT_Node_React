@@ -53,12 +53,14 @@ chatgpt-integration/
 │   │   ├── api/
 │   │   │   └──api.js
 │   │   ├── components/
+│   │   │   ├── SideMenu
+│   │   │   │   ├── SideMenu.js
+│   │   │   │   └── SideMenu.css
 │   │   ├── styles/
 │   │   │   ├── App.css
 │   │   │   └──index.css
 │   │   ├── App.js
-│   │   ├── index.js
-│   │   └── logo.svg
+│   │   └──  index.js
 │   ├── .gitignore
 │   ├── package.lock.json
 │   ├── package.json
@@ -310,13 +312,89 @@ export const makeRequest = async (message) => {
 
 ### 15. Componetizando os elementos
 
-#### Crie um arquivo reset.css e inclua a [padronização de estilos entre navegadores](https://www.devmedia.com.br/como-utilizar-a-tecnica-css-reset/26797)
-#### Ajuste app.js:
+#### Crie um arquivo web/styles/reset.css e inclua a [padronização de estilos entre navegadores](https://www.devmedia.com.br/como-utilizar-a-tecnica-css-reset/26797)
+#### Ajuste web/app.js:
 > importar reset.js
 > importar api
 > importar userState do react
 
+```js
+import {useState} from 'react'
+import './styles/App.css';
+import './styles/reset.css';
+import { makeRequest } from './api/api';
+function App() {
+  return (
+    <div className="App">
+      <h1>App works!!!</h1>
+    </div>
+  );
+}
+export default App;
+```
+#### Crie os arquivos web/components/SideMenu.js e web/components/SideMenu.css
 
+> web/components/SideMenu.js
+```js
+import React from 'react'
+import './SideMenu.css'
+
+export const SideMenu = ()=> {
+    return(
+        <aside className='sidemenu'>
+            <div className='sidemenu-button'>
+                <span>+</span>
+                Novo chat
+            </div>
+        </aside>
+    )
+}
+```
+
+> web/components/SideMenu.css
+```css
+.sidemenu {
+    width: 260px;
+    padding: 10px;
+    background-color: #202123;
+}
+
+.sidemenu-button{
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    transition: ease 0.25 all;
+}
+
+.sidemenu-button:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidemenu-button span{
+    padding-left: 6px;
+    padding-right: 12px;
+}
+```
+
+> Faça a importação em web/App.js
+```js
+import {useState} from 'react'
+import './styles/App.css';
+import './styles/reset.css';
+import { makeRequest } from './api/api';
+import { SideMenu } from './components/SideMenu/SideMenu';
+
+function App() {
+  return (
+    <div className="App">
+      <SideMenu></SideMenu>
+      <h1>App works!!!</h1>
+    </div>
+  );
+}
+
+export default App;
+```
 
 ---
 
