@@ -286,7 +286,7 @@ No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda c
 
 ### 14. Criar conexão entre front-end e chatgpt
 
-#### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css)
+#### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css - ajustar importação em App.js e index.js)
 
 ```bash
 mkdir server web
