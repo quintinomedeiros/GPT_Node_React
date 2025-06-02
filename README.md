@@ -276,6 +276,7 @@ npm install -g create-react-app
 npx create-react-app gpt-front
 ```
 > ⚠️ **Dica:** após criar o projeto react, ele salva os arquivos em uma pasta com o nome do app. Sugere-se acessar a pasta com o explorer, arrastar os arquivos para o diretório web e eliminar o diretório vazio.
+
 > ⚠️ **Dica:** em src elimine os arquivos - test.js; reportWebVitals.js (eliminar o código ao fim e a importação em index.js); setuptests.js.
 
 No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda com npm scripts
