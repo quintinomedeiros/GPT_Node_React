@@ -51,6 +51,7 @@ chatgpt-integration/
 │   │   └── robots.txt
 │   ├── src/
 │   │   ├── api/
+│   │   │   └──api.js
 │   │   ├── components/
 │   │   ├── styles/
 │   │   │   ├── App.css
