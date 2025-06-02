@@ -293,7 +293,7 @@ No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda c
 #### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css - ajustar importação em App.js e index.js)
 
 
-### 15. Instalar Axiox para consumir api
+### 15. Instalar Axios para consumir api
 
 ```bash
 npm i axios
@@ -398,6 +398,25 @@ function App() {
 
 export default App;
 ```
+
+> Altere a classe .App web/src/styles/App.css
+
+```css
+.App {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  color: #fff;
+  background-color: #282c34;
+}
+```
+
+
+
 
 ---
 
