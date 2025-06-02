@@ -27,7 +27,7 @@ chatgpt-integration/
 │   ├── node_modules/...(gitignore)
 │   ├── src/
 │   │   ├── assets/
-│   │   │   └── Avatar
+│   │   │   └── avatar.js
 │   │   ├── config/
 │   │   │   └── openai.js
 │   │   ├── controllers/
@@ -420,10 +420,26 @@ export default App;
 }
 ```
 
-#### Crie os arquivos web/components/ChatMessage.js e web/components/ChatMessage.css
+#### Crie o arquivo web/src/assets/avatar.js
+```js
+import React from 'react';
+
+const Avatar = (props) =>{
+    return(
+        <svg>
+
+        </svg>
+    )
+}
+
+export default Avatar
+```
+
+#### Crie os arquivos web/components/ChatMessage.js e web/components/ChatMessage.css e import o Avatar
 ```js
 import React from "react";
 import './ChatMessage.css';
+import Avatar from "../../assets/avatar";
 
 // user (user | chatgpt)
 // message - aonde vai estar o prompt
@@ -441,11 +457,6 @@ export const ChatMessage = ({message}) => {
         </div>
     </div>
 }
-```
-
-#### Crie os arquivos web/src/assets/avatar.js e web/src/assets/avatar.css
-```js
-
 ```
 
 ---
