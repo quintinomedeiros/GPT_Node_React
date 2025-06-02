@@ -41,7 +41,24 @@ chatgpt-integration/
 │   ├── .package-lock.json
 │   └── package.json
 ├── web/ # Frontend com React
-│   └── ...
+│   └── node_modules/...(gitignore)
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── src/
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   └── logo.svg
+│   ├── .gitignore
+│   ├── package.lock.json
+│   ├── package.json
+├── README.md
 ```
 
 ## Como o servidor funciona
@@ -258,6 +275,12 @@ npm install -g create-react-app
 ```bash
 npx create-react-app gpt-front
 ```
+> ⚠️ **Dica:** após criar o projeto react, ele salva os arquivos em uma pasta com o nome do app. Sugere-se acessar a pasta com o explorer, arrastar os arquivos para o diretório web e eliminar o diretório vazio.
+
+> ⚠️ **Dica:** em src elimine os arquivos - test.js; reportWebVitals.js (eliminar o código ao fim e a importação em index.js); setuptests.js.
+
+No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda com npm scripts
+
 
 ---
 
