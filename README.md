@@ -21,9 +21,10 @@ Este projeto é um exemplo completo de como criar uma aplicação que integra um
 
 ## 📁 Estrutura do Projeto
 
-```
+```plaintext
 chatgpt-integration/
 ├── server/ # Backend com Node.js + Express
+│   ├── node_modules/...(gitignore)
 │   ├── src/
 │   │   ├── config/
 │   │   │   └── openai.js
@@ -35,12 +36,23 @@ chatgpt-integration/
 │   │   │   └── routes.js
 │   │   ├── app.js
 │   │   └── server.js
-│   ├── .env
+│   ├── .env(gitignore)
 │   ├── .gitignore
+│   ├── .package-lock.json
 │   └── package.json
 ├── web/ # Frontend com React
 │   └── ...
 ```
+
+## Como o servidor funciona
+
+Ao iniciar o servidor (`server.js`), a aplicação Express é configurada em `app.js`, onde middlewares essenciais e rotas são carregados.
+
+Quando o usuário faz uma requisição HTTP para alguma rota dentro do caminho `/api`, essa requisição é encaminhada para o arquivo `routes.js`, que direciona para o controller correspondente (por exemplo, `prompt-controller.js`).
+
+O controller trata a lógica do pedido, podendo interagir com modelos de dados (`input-prompt.js`) e serviços externos configurados em `openai.js`. Após processar a requisição, o servidor envia a resposta final ao cliente (frontend React).
+
+Dessa forma, o backend atua como intermediário entre o usuário e os serviços de IA, organizando o fluxo de dados e respostas.
 
 ## 🔹 Passo a Passo
 
