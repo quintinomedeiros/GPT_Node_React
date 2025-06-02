@@ -308,6 +308,16 @@ export const makeRequest = async (message) => {
 }
 ```
 
+### 15. Componetizando os elementos
+
+#### Crie um arquivo reset.css e inclua a [padronização de estilos entre navegadores](https://www.devmedia.com.br/como-utilizar-a-tecnica-css-reset/26797)
+#### Ajuste app.js:
+> importar reset.js
+> importar api
+> importar userState do react
+
+
+
 ---
 
 ## 📄 Exemplo de Requisição
