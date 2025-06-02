@@ -459,6 +459,27 @@ export const ChatMessage = ({message}) => {
 }
 ```
 
+```css
+.chat-message.chatgpt{
+    background-color: #444654;
+}
+
+.chat-message-center{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.message{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+```
+
 ---
 
 ## 📄 Exemplo de Requisição
