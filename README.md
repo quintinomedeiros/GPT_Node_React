@@ -26,6 +26,8 @@ chatgpt-integration/
 ├── server/ # Backend com Node.js + Express
 │   ├── node_modules/...(gitignore)
 │   ├── src/
+│   │   ├── assets/
+│   │   │   └── Avatar
 │   │   ├── config/
 │   │   │   └── openai.js
 │   │   ├── controllers/
@@ -53,6 +55,9 @@ chatgpt-integration/
 │   │   ├── api/
 │   │   │   └──api.js
 │   │   ├── components/
+│   │   │   ├── ChatMessage
+│   │   │   │   ├── ChatMessage.js
+│   │   │   │   └── ChatMessage.css
 │   │   │   ├── SideMenu
 │   │   │   │   ├── SideMenu.js
 │   │   │   │   └── SideMenu.css
@@ -416,7 +421,32 @@ export default App;
 ```
 
 #### Crie os arquivos web/components/ChatMessage.js e web/components/ChatMessage.css
+```js
+import React from "react";
+import './ChatMessage.css';
 
+// user (user | chatgpt)
+// message - aonde vai estar o prompt
+export const ChatMessage = ({message}) => {
+    <div className={`chat-message ${message.user === 'gpt'} && "chatgpt"`}>
+        <div className="chat-message-center">
+            <div className={`avatar {message.use === 'gpt' && "chatgpt}`}>
+                {message.user === 'gpt' && (
+                    <Avatar/>
+                )}
+            </div>
+        </div>
+        <div className="message">
+            {message.message}
+        </div>
+    </div>
+}
+```
+
+#### Crie os arquivos web/src/assets/avatar.js e web/src/assets/avatar.css
+```js
+
+```
 
 ---
 
@@ -450,13 +480,6 @@ export default App;
 
 ---
 
-## 🚀 Próximos passos
-
-* Criar frontend em React no diretório `web`
-* Conectar o React com esta API usando `fetch` ou `axios`
-* Tratar validações e erros no frontend
-
----
 
 ## ✍️ Autor
 
