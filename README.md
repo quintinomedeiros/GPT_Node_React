@@ -435,6 +435,9 @@ const Avatar = (props) =>{
 export default Avatar
 ```
 
+⚠️ **Dica:** Acesse o site do site GPT, inspecione o ícone e copie o path para colocar dentro do <svg>
+
+
 #### Crie os arquivos web/components/ChatMessage.js e web/components/ChatMessage.css e import o Avatar
 ```js
 import React from "react";
