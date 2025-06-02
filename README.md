@@ -104,7 +104,7 @@ node_modules/
 
 ### 7. Configurar app e servidor
 
-#### `src/app.js`
+#### `server/src/app.js`
 
 ```js
 const express = require("express")
@@ -119,7 +119,7 @@ app.use(cors())
 module.exports = app
 ```
 
-#### `src/server.js`
+#### `server/src/server.js`
 
 ```js
 const app = require("./app")
@@ -167,7 +167,7 @@ module.exports = class openai {
 
 ### 10. Criar Model
 
-#### `src/models/input-prompt.js`
+#### `server/src/models/input-prompt.js`
 
 ```js
 /**
@@ -184,7 +184,7 @@ module.exports = InputPrompt
 
 ### 11. Criar Controller
 
-#### `src/controllers/prompt-controller.js`
+#### `server/src/controllers/prompt-controller.js`
 
 ```js
 const InputPrompt = require("../models/input-prompt")
@@ -217,7 +217,7 @@ module.exports = {
 
 ### 12. Criar Rotas
 
-#### `src/routes/routes.js`
+#### `server/src/routes/routes.js`
 
 ```js
 const express = require("express")
@@ -250,6 +250,13 @@ module.exports = app;
 ```
 
 ---
+
+### 13. Instalar o react (no diretório web)
+
+```bash
+cd web
+npm install -g create-react-app
+```
 
 ## 📄 Exemplo de Requisição
 
