@@ -287,6 +287,7 @@ npx create-react-app gpt-front
 
 No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda com npm scripts
 
+
 ### 14. Criar conexão entre front-end e chatgpt
 
 #### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css - ajustar importação em App.js e index.js)
@@ -310,9 +311,10 @@ export const makeRequest = async (message) => {
 }
 ```
 
-### 15. Componetizando os elementos
+### 16. Componetizando os elementos - SideMenu
 
 #### Crie um arquivo web/styles/reset.css e inclua a [padronização de estilos entre navegadores](https://www.devmedia.com.br/como-utilizar-a-tecnica-css-reset/26797)
+
 #### Ajuste web/app.js:
 > importar reset.js
 > importar api
@@ -332,6 +334,7 @@ function App() {
 }
 export default App;
 ```
+
 #### Crie os arquivos web/components/SideMenu.js e web/components/SideMenu.css
 
 > web/components/SideMenu.js
