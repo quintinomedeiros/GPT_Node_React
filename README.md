@@ -415,7 +415,7 @@ export default App;
 }
 ```
 
-
+#### Crie os arquivos web/components/ChatMessage.js e web/components/ChatMessage.css
 
 
 ---
