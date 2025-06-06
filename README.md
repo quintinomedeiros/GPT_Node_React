@@ -82,6 +82,8 @@ O controller trata a lógica do pedido, podendo interagir com modelos de dados (
 
 Dessa forma, o backend atua como intermediário entre o usuário e os serviços de IA, organizando o fluxo de dados e respostas.
 
+> ⚠️ **Dica:** para reiniciar o servidor, entre na pasta **web** e no terminal digite ```npm start```.
+
 ## 🔹 Passo a Passo
 
 ### 1. Criar Diretórios
