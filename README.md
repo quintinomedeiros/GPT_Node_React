@@ -26,6 +26,8 @@ chatgpt-integration/
 ├── server/ # Backend com Node.js + Express
 │   ├── node_modules/...(gitignore)
 │   ├── src/
+│   │   ├── assets/
+│   │   │   └── avatar.js
 │   │   ├── config/
 │   │   │   └── openai.js
 │   │   ├── controllers/
@@ -50,15 +52,24 @@ chatgpt-integration/
 │   │   ├── manifest.json
 │   │   └── robots.txt
 │   ├── src/
-│   │   ├── App.css
+│   │   ├── api/
+│   │   │   └──api.js
+│   │   ├── components/
+│   │   │   ├── ChatMessage
+│   │   │   │   ├── ChatMessage.js
+│   │   │   │   └── ChatMessage.css
+│   │   │   ├── SideMenu
+│   │   │   │   ├── SideMenu.js
+│   │   │   │   └── SideMenu.css
+│   │   ├── styles/
+│   │   │   ├── App.css
+│   │   │   └──index.css
 │   │   ├── App.js
-│   │   ├── index.css
-│   │   ├── index.js
-│   │   └── logo.svg
+│   │   └──  index.js
 │   ├── .gitignore
 │   ├── package.lock.json
 │   ├── package.json
-├── README.md
+└── README.md
 ```
 
 ## Como o servidor funciona
@@ -282,6 +293,196 @@ npx create-react-app gpt-front
 No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda com npm scripts
 
 
+### 14. Criar conexão entre front-end e chatgpt
+
+#### Crie os diretórios: src/api, src/components e src/styles (mover App.css e index.css - ajustar importação em App.js e index.js)
+
+
+### 15. Instalar Axios para consumir api
+
+```bash
+npm i axios
+```
+
+#### Crie o arquivo web/api/api.js
+```js
+import axios from 'axios'
+
+const URL_API = 'http://localhost:5555/api/prompt'
+
+export const makeRequest = async (message) => {
+    const {data} = await axios.post(URL_API, message)
+    return data
+}
+```
+
+### 16. Componetizando os elementos - SideMenu
+
+#### Crie um arquivo web/styles/reset.css e inclua a [padronização de estilos entre navegadores](https://www.devmedia.com.br/como-utilizar-a-tecnica-css-reset/26797)
+
+#### Ajuste web/app.js:
+> importar reset.js
+> importar api
+> importar userState do react
+
+```js
+import {useState} from 'react'
+import './styles/App.css';
+import './styles/reset.css';
+import { makeRequest } from './api/api';
+function App() {
+  return (
+    <div className="App">
+      <h1>App works!!!</h1>
+    </div>
+  );
+}
+export default App;
+```
+
+#### Crie os arquivos web/components/SideMenu.js e web/components/SideMenu.css
+
+> web/components/SideMenu.js
+```js
+import React from 'react'
+import './SideMenu.css'
+
+export const SideMenu = ()=> {
+    return(
+        <aside className='sidemenu'>
+            <div className='sidemenu-button'>
+                <span>+</span>
+                Novo chat
+            </div>
+        </aside>
+    )
+}
+```
+
+> web/components/SideMenu.css
+```css
+.sidemenu {
+    width: 260px;
+    padding: 10px;
+    background-color: #202123;
+}
+
+.sidemenu-button{
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    transition: ease 0.25 all;
+}
+
+.sidemenu-button:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidemenu-button span{
+    padding-left: 6px;
+    padding-right: 12px;
+}
+```
+
+> Faça a importação em web/App.js
+```js
+import {useState} from 'react'
+import './styles/App.css';
+import './styles/reset.css';
+import { makeRequest } from './api/api';
+import { SideMenu } from './components/SideMenu/SideMenu';
+
+function App() {
+  return (
+    <div className="App">
+      <SideMenu></SideMenu>
+      <h1>App works!!!</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+
+> Altere a classe .App web/src/styles/App.css
+
+```css
+.App {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  color: #fff;
+  background-color: #282c34;
+}
+```
+
+#### Crie o arquivo web/src/assets/avatar.js
+```js
+import React from 'react';
+
+const Avatar = (props) =>{
+    return(
+        <svg>
+
+        </svg>
+    )
+}
+
+export default Avatar
+```
+
+⚠️ **Dica:** Acesse o site do site GPT, inspecione o ícone e copie o path para colocar dentro do <svg>
+
+
+#### Crie os arquivos web/components/ChatMessage.js e web/components/ChatMessage.css e import o Avatar
+```js
+import React from "react";
+import './ChatMessage.css';
+import Avatar from "../../assets/avatar";
+
+// user (user | chatgpt)
+// message - aonde vai estar o prompt
+export const ChatMessage = ({message}) => {
+    <div className={`chat-message ${message.user === 'gpt'} && "chatgpt"`}>
+        <div className="chat-message-center">
+            <div className={`avatar {message.use === 'gpt' && "chatgpt}`}>
+                {message.user === 'gpt' && (
+                    <Avatar/>
+                )}
+            </div>
+        </div>
+        <div className="message">
+            {message.message}
+        </div>
+    </div>
+}
+```
+
+```css
+.chat-message.chatgpt{
+    background-color: #444654;
+}
+
+.chat-message-center{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.message{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+```
+
 ---
 
 ## 📄 Exemplo de Requisição
@@ -314,13 +515,6 @@ No Vs Code, dentro do diretório Web, rode o projeto na barra lateral esquerda c
 
 ---
 
-## 🚀 Próximos passos
-
-* Criar frontend em React no diretório `web`
-* Conectar o React com esta API usando `fetch` ou `axios`
-* Tratar validações e erros no frontend
-
----
 
 ## ✍️ Autor
 
