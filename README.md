@@ -54,6 +54,8 @@ chatgpt-integration/
 │   ├── src/
 │   │   ├── api/
 │   │   │   └──api.js
+│   │   ├── assets/
+│   │   │   └──avatar.js
 │   │   ├── components/
 │   │   │   ├── ChatMessage
 │   │   │   │   ├── ChatMessage.js
@@ -63,9 +65,10 @@ chatgpt-integration/
 │   │   │   │   └── SideMenu.css
 │   │   ├── styles/
 │   │   │   ├── App.css
-│   │   │   └──index.css
+│   │   │   ├── index.css
+│   │   │   └── reset.css
 │   │   ├── App.js
-│   │   └──  index.js
+│   │   └── index.js
 │   ├── .gitignore
 │   ├── package.lock.json
 │   ├── package.json
