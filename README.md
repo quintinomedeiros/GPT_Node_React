@@ -54,6 +54,8 @@ chatgpt-integration/
 │   ├── src/
 │   │   ├── api/
 │   │   │   └──api.js
+│   │   ├── assets/
+│   │   │   └──avatar.js
 │   │   ├── components/
 │   │   │   ├── ChatMessage
 │   │   │   │   ├── ChatMessage.js
@@ -63,9 +65,10 @@ chatgpt-integration/
 │   │   │   │   └── SideMenu.css
 │   │   ├── styles/
 │   │   │   ├── App.css
-│   │   │   └──index.css
+│   │   │   ├── index.css
+│   │   │   └── reset.css
 │   │   ├── App.js
-│   │   └──  index.js
+│   │   └── index.js
 │   ├── .gitignore
 │   ├── package.lock.json
 │   ├── package.json
@@ -81,6 +84,8 @@ Quando o usuário faz uma requisição HTTP para alguma rota dentro do caminho `
 O controller trata a lógica do pedido, podendo interagir com modelos de dados (`input-prompt.js`) e serviços externos configurados em `openai.js`. Após processar a requisição, o servidor envia a resposta final ao cliente (frontend React).
 
 Dessa forma, o backend atua como intermediário entre o usuário e os serviços de IA, organizando o fluxo de dados e respostas.
+
+> ⚠️ **Dica:** para reiniciar o servidor, entre na pasta **web** e no terminal digite ```npm start```.
 
 ## 🔹 Passo a Passo
 
@@ -447,18 +452,21 @@ import Avatar from "../../assets/avatar";
 // user (user | chatgpt)
 // message - aonde vai estar o prompt
 export const ChatMessage = ({message}) => {
-    <div className={`chat-message ${message.user === 'gpt'} && "chatgpt"`}>
-        <div className="chat-message-center">
-            <div className={`avatar {message.use === 'gpt' && "chatgpt}`}>
-                {message.user === 'gpt' && (
-                    <Avatar/>
-                )}
+    return(
+        <div className={`chat-message ${message.user === 'gpt'} && "chatgpt"`}>
+            <div className="chat-message-center">
+                <div className={`avatar {message.use === 'gpt' && "chatgpt}`}>
+                    {message.user === 'gpt' && (
+                        <Avatar/>
+                    )}
+                </div>
+            </div>
+            <div className="message">
+                {message.message}
             </div>
         </div>
-        <div className="message">
-            {message.message}
-        </div>
-    </div>
+    )
+    
 }
 ```
 
@@ -482,6 +490,74 @@ export const ChatMessage = ({message}) => {
     padding-right: 40px;
 }
 ```
+
+### 8. Criar os hooks dos dos estados (useStat)
+
+#### Atualize web/src/App.js
+
+```bash
+import {useState} from 'react'
+
+function App() {
+
+  const[input, setInput] = useState("")
+  const[chatlog, setChatLog] = useState([{
+    user:"gpt",
+    message: "Como posso te ajudar hoje?"
+  }])
+
+  async function handleSubmit(e){
+    e.preventDefault()
+
+    let response = await makeRequest({prompt: input})
+
+    response = response.data.split('\n')
+    .map(line => <p>{line}</p>)
+
+    setChatLog([...chatlog,{
+      user:'me',
+      message: `${input}`
+    },
+    {
+      user:'gpt',
+      message: response
+    }
+
+    ])
+
+    setInput("")
+  }
+
+  return (
+    <div className="App">
+      <SideMenu></SideMenu>
+      <section className='chatbox'>
+        <div className='chat-log'>
+          {chatlog.map((message, index)=>(
+            <ChatMessage 
+              key={index}
+              message={message.message} 
+            />
+          ))}
+        </div>
+        <div className='chat-input-holder'> 
+            <form onSubmit={handleSubmit}>
+              <input
+                rows='1'
+                className='chat-input-textarea'
+                type="text" 
+                placeholder='Digite sua mensagem aqui'
+                value={input}
+                onChange={(e)=>setInput(e.target.value)}
+              />
+            </form>
+        </div>
+      </section>
+    </div>
+  );
+}
+```
+
 
 ---
 
