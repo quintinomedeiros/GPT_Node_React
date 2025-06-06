@@ -39,7 +39,7 @@ module.exports = {
             console.error("Erro ao enviar o texto:", error)
             return res.status(400).json({
                 success: false,
-                error: error.response ? error.response : "Erro ao enviar o texto"
+                error: error.response ? error.response.data : "Erro ao enviar o texto"
             })
         }
     }

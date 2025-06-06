@@ -1,18 +1,49 @@
-.chat-message.chatgpt{
-    background-color: #444654;
-}
-
-.chat-message-center{
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
+/* Estilo base de uma mensagem no chat */
+.chat-message {
     display: flex;
-    padding: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
-.message{
-    padding-left: 40px;
-    padding-right: 40px;
-}
+    padding: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+    gap: 12px;
+  }
+  
+  /* Estilo adicional para mensagens geradas pelo ChatGPT */
+  .chat-message.chatgpt {
+    background-color: #444654;
+    border-radius: 10px;
+  }
+  
+  /* Centraliza o conteúdo da mensagem */
+  .chat-message-center {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  /* Área que contém o texto da mensagem */
+  .message {
+    background-color: #343541;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+  }
+  
+  /* Avatar padrão (para usuário) */
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilo alternativo do avatar quando é uma mensagem do ChatGPT */
+  .avatar.chatgpt {
+    background-color: #0da37f;
+  }
+  

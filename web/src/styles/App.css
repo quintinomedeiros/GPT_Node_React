@@ -1,3 +1,4 @@
+/* Container principal da aplicação: ocupa toda a tela e utiliza flexbox para layout */
 .App {
   text-align: center;
   position: absolute;
@@ -7,20 +8,23 @@
   right: 0;
   display: flex;
   color: #fff;
-  background-color: #282c34;
+  background-color: #212121;
 }
 
+/* Estilo do logo da aplicação */
 .App-logo {
   height: 40vmin;
-  pointer-events: none;
+  pointer-events: none; /* evita cliques no logo */
 }
 
+/* Animação do logo girando continuamente, se o usuário não preferir movimento reduzido */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Cabeçalho da aplicação: centraliza conteúdo vertical e horizontalmente */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,10 +36,12 @@
   color: white;
 }
 
+/* Estilo para links na aplicação */
 .App-link {
   color: #61dafb;
 }
 
+/* Animação de rotação usada no logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -44,4 +50,64 @@
     transform: rotate(360deg);
   }
 }
-/* CSS Chat GPT */
+
+/* ========== ESTILOS DO CHAT GPT ========== */
+
+/* Área principal do chat onde as mensagens são exibidas */
+.chatbox {
+  flex: 1;
+  background-color: #353541;
+  position: relative;
+  overflow-y: auto; /* permite rolagem vertical */
+}
+
+/* Container que segura o campo de entrada de mensagem */
+.chat-input-holder {
+  padding: 24px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Campo de texto para digitar as mensagens do chat */
+.chat-input-textarea {
+  background-color: #40414f;
+  width: 90%;
+  padding: 12px;
+  columns: white; /* (provavelmente um erro, veja observação abaixo) */
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: none;
+  margin: 12px;
+  outline: none;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
+  resize: none; /* impede redimensionamento manual */
+}
+
+/* Área onde o histórico das mensagens é exibido */
+.chat-log {
+  text-align: left;
+  white-space: "pre-wrap"; /* permite quebra de linha automática (provavelmente um erro, veja observação abaixo) */
+}
+
+/* Mensagens da IA (ChatGPT) com fundo diferenciado */
+.chat-message.chatgpt {
+  background-color: #444654;
+}
+
+/* Estilo do avatar padrão */
+.avatar {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+/* Estilo do avatar para mensagens da IA */
+.avatar.chatgpt {
+  background-color: #0da37f;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
