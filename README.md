@@ -488,6 +488,74 @@ export const ChatMessage = ({message}) => {
 }
 ```
 
+### 8. Criar os hooks dos dos estados (useStat)
+
+#### Atualize web/src/App.js
+
+```bash
+import {useState} from 'react'
+
+function App() {
+
+  const[input, setInput] = useState("")
+  const[chatlog, setChatLog] = useState([{
+    user:"gpt",
+    message: "Como posso te ajudar hoje?"
+  }])
+
+  async function handleSubmit(e){
+    e.preventDefault()
+
+    let response = await makeRequest({prompt: input})
+
+    response = response.data.split('\n')
+    .map(line => <p>{line}</p>)
+
+    setChatLog([...chatlog,{
+      user:'me',
+      message: `${input}`
+    },
+    {
+      user:'gpt',
+      message: response
+    }
+
+    ])
+
+    setInput("")
+  }
+
+  return (
+    <div className="App">
+      <SideMenu></SideMenu>
+      <section className='chatbox'>
+        <div className='chat-log'>
+          {chatlog.map((message, index)=>(
+            <ChatMessage 
+              key={index}
+              message={message.message} 
+            />
+          ))}
+        </div>
+        <div className='chat-input-holder'> 
+            <form onSubmit={handleSubmit}>
+              <input
+                rows='1'
+                className='chat-input-textarea'
+                type="text" 
+                placeholder='Digite sua mensagem aqui'
+                value={input}
+                onChange={(e)=>setInput(e.target.value)}
+              />
+            </form>
+        </div>
+      </section>
+    </div>
+  );
+}
+```
+
+
 ---
 
 ## 📄 Exemplo de Requisição
